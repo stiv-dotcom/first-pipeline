@@ -1,0 +1,23 @@
+cache:  #caching des dépendances pour accélérer les builds
+  paths:
+    - depedencies_pycache/
+
+stage:  #définition des étapes du pipeline
+  -build
+  -test
+
+build-job:  #compilation et construction de l'application
+  -stage: build
+  script: echo "projet-pipeline ci/cd"
+
+test-job: #tests
+  -stage: test
+  script: echo "test of projet-pipeline ci/cd"
+
+variables:  #variables d'environnement
+  -TEST_VAR: "test value"
+  -APP_ENV: production
+
+deploy-job: #déploiement de l'application
+  -stage: deploy
+  script: echo "deploying in APP environment"
